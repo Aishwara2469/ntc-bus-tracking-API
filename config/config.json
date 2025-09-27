@@ -1,23 +1,30 @@
 {
   "development": {
-    "username": "${MYSQL_USER}",
-    "password": "${MYSQL_PASSWORD}",
-    "database": "${MYSQL_DATABASE}",
-    "host": "${MYSQL_HOST}",
-    "dialect": "mysql"
-  },
-  "test": {
-    "username": "${MYSQL_USER}",
-    "password": "${MYSQL_PASSWORD}",
-    "database": "${MYSQL_DATABASE}_test",
-    "host": "${MYSQL_HOST}",
-    "dialect": "mysql"
+    "username": "avnadmin",
+    "password": "AVNS_kM9qJo_hk9TLygmjXfj",
+    "database": "defaultdb",
+    "host": "ntc-bus-tracking-ntc-bus-tracking.j.aivencloud.com",
+    "port": 23090,
+    "dialect": "mysql",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "production": {
-    "username": "${MYSQL_USER}",
-    "password": "${MYSQL_PASSWORD}",
-    "database": "${MYSQL_DATABASE}_prod",
-    "host": "${MYSQL_HOST}",
-    "dialect": "mysql"
+    "username": "avnadmin",
+    "password": "AVNS_kM9qJo_hk9TLygmjXfj",
+    "database": "defaultdb",
+    "host": "ntc-bus-tracking-ntc-bus-tracking.j.aivencloud.com",
+    "port": 23090,
+    "dialect": "mysql",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }

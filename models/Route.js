@@ -1,11 +1,12 @@
-import { DataTypes } from 'sequelize';
-import sequelize  from '../config/db.js';
 
-const LocationUpdate = sequelize.define('LocationUpdate', {
-  lat: { type: DataTypes.FLOAT, allowNull: false },
-  long: { type: DataTypes.FLOAT, allowNull: false },
-  timestamp: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
-  speed: { type: DataTypes.FLOAT },
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/db.js';
+
+const Route = sequelize.define('Route', {
+  name: { type: DataTypes.STRING, allowNull: false },
+  start: { type: DataTypes.STRING, allowNull: false },
+  end: { type: DataTypes.STRING, allowNull: false },
+  distance: { type: DataTypes.FLOAT },
 });
 
-export default LocationUpdate;
+export default Route;

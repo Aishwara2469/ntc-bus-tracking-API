@@ -2,16 +2,16 @@
   "openapi": "3.0.3",
   "info": {
     "title": "NTC Bus Tracking API",
-    "description": "A RESTful API for real-time bus tracking and management, developed for NIB304CEM coursework.",
+    "description": "A RESTful API for real-time bus tracking and management",
     "version": "1.0.0",
     "contact": {
       "name": "Aishwara",
-      "email": "aishwara@example.com"
+      "email": "charuwinda1998@gmail.com"
     }
   },
   "servers": [
     {
-      "url": "https://ntc-bus-api.onrender.com",
+      "url": "https://ntc-bus-tracking-api-1.onrender.com",
       "description": "Production server"
     },
     {
