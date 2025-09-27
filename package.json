@@ -2,7 +2,7 @@
   "name": "ntc-bus-tracking-api",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
+  "description": "RESTful API for NTC Bus Tracking System",
   "main": "app.js",
   "directories": {
     "doc": "docs"
@@ -13,17 +13,24 @@
     "migrate": "npx sequelize-cli db:migrate",
     "undo": "npx sequelize-cli db:migrate:undo"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["api", "bus-tracking", "node", "mysql", "sequelize"],
+  "author": "Aishwara",
   "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
-    "bcryptjs": "^3.0.2",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^17.2.2",
-    "express": "^5.1.0",
+    "express": "^4.19.2",
     "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.15.1",
     "sequelize": "^6.37.7",
     "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "sequelize-cli": "^6.6.2"
   }
 }
