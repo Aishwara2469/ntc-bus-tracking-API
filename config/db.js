@@ -9,13 +9,13 @@ const sequelize = new Sequelize(
   process.env.MYSQL_PASSWORD,
   {
     host: process.env.MYSQL_HOST,
-    port: process.env.MYSQL_PORT || 3306,
+    port: process.env.MYSQL_PORT || 3000,
     dialect: 'mysql',
     ssl: true, 
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: true 
+        rejectUnauthorized: false 
       }
     },
     logging: false,
