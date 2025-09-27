@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import { define } from '../config/db';
+import sequelize from '../config/db.js'; 
 
-const Bus = define('Bus', {
+const Bus = sequelize.define('Bus', {
   registration: { type: DataTypes.STRING, allowNull: false, unique: true },
   operator: { type: DataTypes.STRING, allowNull: false },
 });

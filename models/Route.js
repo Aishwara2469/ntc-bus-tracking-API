@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import { define } from '../config/db.js';
+import sequelize  from '../config/db.js';
 
-const LocationUpdate = define('LocationUpdate', {
+const LocationUpdate = sequelize.define('LocationUpdate', {
   lat: { type: DataTypes.FLOAT, allowNull: false },
   long: { type: DataTypes.FLOAT, allowNull: false },
   timestamp: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },

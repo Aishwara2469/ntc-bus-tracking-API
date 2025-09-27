@@ -13,7 +13,13 @@
     "migrate": "npx sequelize-cli db:migrate",
     "undo": "npx sequelize-cli db:migrate:undo"
   },
-  "keywords": ["api", "bus-tracking", "node", "mysql", "sequelize"],
+  "keywords": [
+    "api",
+    "bus-tracking",
+    "node",
+    "mysql",
+    "sequelize"
+  ],
   "author": "Aishwara",
   "license": "ISC",
   "engines": {

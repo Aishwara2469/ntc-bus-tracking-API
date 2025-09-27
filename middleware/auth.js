@@ -1,5 +1,8 @@
-import { verify } from 'jsonwebtoken';
-require('dotenv').config();
+
+import dotenv from 'dotenv';
+import pkg from 'jsonwebtoken';
+const { verify } = pkg;
+dotenv.config();
 
 export default (roles = []) => (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
