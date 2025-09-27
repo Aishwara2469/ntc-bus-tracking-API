@@ -1,25 +1,21 @@
 {
   "name": "ntc-bus-tracking-api",
   "version": "1.0.0",
-  "description": "node_modules\r .env\r *.log",
+  "type": "module",
+  "description": "",
   "main": "app.js",
   "directories": {
     "doc": "docs"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Aishwara2469/ntc-bus-tracking-API.git"
-  },
+"scripts": {
+  "start": "node app.js",
+  "dev": "nodemon app.js",
+  "migrate": "npx sequelize-cli db:migrate",
+  "undo": "npx sequelize-cli db:migrate:undo"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Aishwara2469/ntc-bus-tracking-API/issues"
-  },
-  "homepage": "https://github.com/Aishwara2469/ntc-bus-tracking-API#readme",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "dotenv": "^17.2.2",
@@ -28,8 +24,5 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.15.1",
     "sequelize": "^6.37.7"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.10"
   }
 }
