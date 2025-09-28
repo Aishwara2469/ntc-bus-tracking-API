@@ -460,6 +460,20 @@
       }
     }
     ,
+    "/locations/trip/{tripId}": {
+      "get": {
+        "summary": "Get all location updates for a trip",
+        "description": "Retrieves all location updates for a specific trip ID.",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "tripId", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "responses": {
+          "200": { "description": "Successful response", "content": { "application/json": { "schema": { "type": "array", "items": { "$ref": "#/components/schemas/LocationUpdate" } } } } },
+          "400": { "description": "Invalid input" },
+          "404": { "description": "Trip not found" }
+        }
+      }
+    }
+    ,
     "/locations/{id}": {
       "get": {
         "summary": "Get a location update by ID",

@@ -19,6 +19,17 @@ export async function getLocationUpdateById(req, res) {
   }
 }
 
+export async function getLocationUpdatesByTripId(req, res) {
+  try {
+    const { tripId } = req.params;
+    if (!tripId) return res.status(400).json({ message: 'tripId is required' });
+    const updates = await LocationUpdate.findAll({ where: { tripId }, order: [['timestamp', 'ASC']] });
+    res.json(updates);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching location updates for trip', error });
+  }
+}
+
 export async function createLocationUpdate(req, res) {
   try {
     const locationUpdate = await LocationUpdate.create(req.body);
