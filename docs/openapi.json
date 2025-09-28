@@ -297,6 +297,37 @@
         }
       }
     },
+    "/buses/{id}": {
+      "get": {
+        "summary": "Get a bus by ID",
+        "description": "Retrieves a specific bus by its ID.",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "responses": {
+          "200": { "description": "Successful response", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Bus" } } } },
+          "404": { "description": "Bus not found" }
+        }
+      },
+      "put": {
+        "summary": "Update a bus",
+        "description": "Updates a specific bus (admin/operator only).",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/BusInput" } } } },
+        "responses": {
+          "200": { "description": "Bus updated", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Bus" } } } },
+          "400": { "description": "Invalid input" },
+          "404": { "description": "Bus not found" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a bus",
+        "description": "Deletes a specific bus (admin only).",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "responses": { "204": { "description": "Bus deleted" }, "404": { "description": "Bus not found" } }
+      }
+    },
     "/trips": {
       "get": {
         "summary": "Get all trips",
@@ -345,6 +376,37 @@
             "description": "Trip created"
           }
         }
+      }
+    },
+    "/trips/{id}": {
+      "get": {
+        "summary": "Get a trip by ID",
+        "description": "Retrieves a specific trip by its ID.",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "responses": {
+          "200": { "description": "Successful response", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Trip" } } } },
+          "404": { "description": "Trip not found" }
+        }
+      },
+      "put": {
+        "summary": "Update a trip",
+        "description": "Updates a specific trip (admin/operator only).",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/TripInput" } } } },
+        "responses": {
+          "200": { "description": "Trip updated", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Trip" } } } },
+          "400": { "description": "Invalid input" },
+          "404": { "description": "Trip not found" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a trip",
+        "description": "Deletes a specific trip (admin only).",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "responses": { "204": { "description": "Trip deleted" }, "404": { "description": "Trip not found" } }
       }
     },
     "/locations": {
@@ -397,77 +459,69 @@
         }
       }
     }
+    ,
+    "/locations/{id}": {
+      "get": {
+        "summary": "Get a location update by ID",
+        "description": "Retrieves a specific location update by its ID.",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "responses": {
+          "200": { "description": "Successful response", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/LocationUpdate" } } } },
+          "404": { "description": "Location update not found" }
+        }
+      },
+      "put": {
+        "summary": "Update a location update",
+        "description": "Updates a specific location update (admin/operator only).",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/LocationUpdateInput" } } } },
+        "responses": {
+          "200": { "description": "Location update updated", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/LocationUpdate" } } } },
+          "400": { "description": "Invalid input" },
+          "404": { "description": "Location update not found" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a location update",
+        "description": "Deletes a specific location update (admin only).",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "responses": { "204": { "description": "Location update deleted" }, "404": { "description": "Location update not found" } }
+      }
+    }
   },
   "components": {
     "schemas": {
       "Route": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "routeNumber": {
-            "type": "string"
-          },
-          "start": {
-            "type": "string"
-          },
-          "end": {
-            "type": "string"
-          },
-          "stops": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": { "type": "string" },
-                "lat": { "type": "number" },
-                "long": { "type": "number" }
-              }
-            }
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          }
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "start": { "type": "string" },
+          "end": { "type": "string" },
+          "distance": { "type": "number" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
         }
       },
       "RouteInput": {
         "type": "object",
         "properties": {
-          "routeNumber": {
-            "type": "string"
-          },
-          "start": {
-            "type": "string"
-          },
-          "end": {
-            "type": "string"
-          },
-          "stops": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": { "type": "string" },
-                "lat": { "type": "number" },
-                "long": { "type": "number" }
-              }
-            }
-          }
+          "name": { "type": "string" },
+          "start": { "type": "string" },
+          "end": { "type": "string" },
+          "distance": { "type": "number" }
         },
-        "required": ["routeNumber", "start", "end"]
+        "required": ["name", "start", "end"]
       },
       "Bus": {
         "type": "object",
         "properties": {
           "id": { "type": "integer" },
           "registration": { "type": "string" },
-          "operator": { "type": "string" },
+          "operatorId": { "type": "integer" },
           "routeId": { "type": "integer" },
           "createdAt": { "type": "string", "format": "date-time" },
           "updatedAt": { "type": "string", "format": "date-time" }
@@ -477,10 +531,10 @@
         "type": "object",
         "properties": {
           "registration": { "type": "string" },
-          "operator": { "type": "string" },
+          "operatorId": { "type": "integer" },
           "routeId": { "type": "integer" }
         },
-        "required": ["registration", "operator", "routeId"]
+        "required": ["registration", "operatorId", "routeId"]
       },
       "Trip": {
         "type": "object",
@@ -512,7 +566,7 @@
           "id": { "type": "integer" },
           "tripId": { "type": "integer" },
           "lat": { "type": "number" },
-          "long": { "type": "number" },
+          "longi": { "type": "number" },
           "timestamp": { "type": "string", "format": "date-time" },
           "speed": { "type": "number" },
           "createdAt": { "type": "string", "format": "date-time" },
@@ -524,10 +578,10 @@
         "properties": {
           "tripId": { "type": "integer" },
           "lat": { "type": "number" },
-          "long": { "type": "number" },
+          "longi": { "type": "number" },
           "speed": { "type": "number" }
         },
-        "required": ["tripId", "lat", "long"]
+        "required": ["tripId", "lat", "longi"]
       }
     },
     "securitySchemes": {

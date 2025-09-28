@@ -1,8 +1,8 @@
-import { LocationUpdate } from '../models/index.js';
+import { LocationUpdate, Trip } from '../models/index.js';
 
 export async function getAllLocationUpdates(req, res) {
   try {
-    const locationUpdates = await LocationUpdate.findAll({ include: ['Trip'] }); 
+  const locationUpdates = await LocationUpdate.findAll({ include: [{ model: Trip }] }); 
     res.json(locationUpdates);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching location updates', error });
@@ -11,7 +11,7 @@ export async function getAllLocationUpdates(req, res) {
 
 export async function getLocationUpdateById(req, res) {
   try {
-    const locationUpdate = await LocationUpdate.findByPk(req.params.id, { include: ['Trip'] });
+  const locationUpdate = await LocationUpdate.findByPk(req.params.id, { include: [{ model: Trip }] });
     if (!locationUpdate) return res.status(404).json({ message: 'Location update not found' });
     res.json(locationUpdate);
   } catch (error) {

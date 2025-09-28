@@ -1,8 +1,8 @@
-import { Trip } from '../models/index.js';
+import { Trip, Bus, Route } from '../models/index.js';
 
 export async function getAllTrips(req, res) {
   try {
-    const trips = await Trip.findAll({ include: ['Bus', 'Route'] }); 
+  const trips = await Trip.findAll({ include: [{ model: Bus }, { model: Route }] }); 
     res.json(trips);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching trips', error });
@@ -11,7 +11,7 @@ export async function getAllTrips(req, res) {
 
 export async function getTripById(req, res) {
   try {
-    const trip = await Trip.findByPk(req.params.id, { include: ['Bus', 'Route'] });
+  const trip = await Trip.findByPk(req.params.id, { include: [{ model: Bus }, { model: Route }] });
     if (!trip) return res.status(404).json({ message: 'Trip not found' });
     res.json(trip);
   } catch (error) {
