@@ -1,3 +1,1 @@
-node_modules
-.env
-*.log
+COBSCCOMP4Y222P-069
