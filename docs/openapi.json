@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://ntc-bus-tracking-api-1.onrender.com",
+      "url": "https://bus-tracker-vxwc.onrender.com/",
       "description": "Production server"
     },
     {
