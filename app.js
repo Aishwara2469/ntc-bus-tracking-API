@@ -13,6 +13,24 @@ import busRoutes from './routes/busRoutes.js';
 import tripRoutes from './routes/tripRoutes.js';
 import locationRoutes from './routes/locationRoutes.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+app.use(express.json());
+
+async function startServer() {
+  try {
+    const swaggerDocument = JSON.parse(
+      await readFile(join(__dirname, 'docs', 'openapi.json'), 'utf8')
+    );
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+    app.use('/auth', authRoutes);
+    app.use('/routes', routeRoutes);
+    app.use('/buses', busRoutes);
+    app.use('/trips', tripRoutes);
+    app.use('/locations', locationRoutes);
 
 app.get('/', (req, res) => {
   res.send(`
@@ -57,24 +75,8 @@ app.get('/', (req, res) => {
 });
 
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
-const app = express();
-app.use(express.json());
 
-async function startServer() {
-  try {
-    const swaggerDocument = JSON.parse(
-      await readFile(join(__dirname, 'docs', 'openapi.json'), 'utf8')
-    );
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-    app.use('/auth', authRoutes);
-    app.use('/routes', routeRoutes);
-    app.use('/buses', busRoutes);
-    app.use('/trips', tripRoutes);
-    app.use('/locations', locationRoutes);
 
     const PORT = process.env.PORT || 3000;
 
