@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "NTC Bus Tracking API",
+    "title": "Bus Tracking API",
     "description": "A RESTful API for real-time bus tracking and management",
     "version": "1.0.0",
     "contact": {
